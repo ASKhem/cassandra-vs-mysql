@@ -2,7 +2,6 @@ from cassandra.cluster import Cluster
 import time
 import pandas as pd
 
-
 def wait_for_cassandra():
     while True:
         try:
@@ -11,8 +10,8 @@ def wait_for_cassandra():
             print("Conexión exitosa a Cassandra")
             return cluster, session
         except Exception as e:
-            print(f"Esperando a que Cassandra esté lista... Error: {e}")
-            time.sleep(5)
+            print(f"Espere por favor... Se está cargando Cassandra: {e}")
+            time.sleep(20)
 
 
 def insert_data_from_csv(session, file_path):
