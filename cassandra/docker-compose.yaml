@@ -1,0 +1,30 @@
+services:
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+    networks:
+      - cassandra-network
+
+  python-cassandra:
+    build: .
+    depends_on:
+      - cassandra
+    volumes:
+      - ./data:/data
+    ports:
+      - "8888:8888"
+    networks:
+      - cassandra-network
+    restart: "no"
+    environment:
+      - PYTHONUNBUFFERED=1
+
+networks:
+  cassandra-network:
+
+volumes:
+  cassandra_data:
