@@ -1,0 +1,36 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: user_data
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - mysql-network
+
+  python-mysql:
+    build: .
+    depends_on:
+      - mysql
+    volumes:
+      - ./data:/data
+      - ./notebooks:/notebooks
+    ports:
+      - "8888:8888"
+    networks:
+      - mysql-network
+    restart: "no"
+    environment:
+      - PYTHONUNBUFFERED=1
+
+networks:
+  mysql-network:
+
+
+volumes:
+  mysql_data:
+    driver: local
