@@ -56,3 +56,33 @@ Hemos decidido dividir el proyecto en dos carpetas, así como crear dos archivos
 ## 📝 Notas
 - Los contenedores se ejecutan de forma independiente
 - Los resultados de las pruebas se pueden visualizar en los notebooks
+
+ 📊 Resultados de Rendimiento
+
+## ⏱️ Tiempos de Ejecución
+
+### Cassandra
+| Operación    | Tiempo (segundos) |
+|--------------|------------------|
+| Actualizar   | 0.0035s         |
+| Leer         | 0.0061s         |
+
+### MySQL
+| Operación    | Tiempo (segundos) |
+|--------------|------------------|
+| Actualizar   | 0.0069s         |
+| Leer         | 0.00038s        |
+
+## 🔍 Análisis de Resultados
+
+### Conclusiones Principales
+- ✅ MySQL destaca en lecturas simples
+- ✅ Cassandra sobresale en actualizaciones
+- ✅ Ambos sistemas muestran excelente rendimiento (milisegundos)
+
+### 💡 Explicación
+Estos resultados son consistentes con el diseño de cada sistema:
+- **Cassandra**: Optimizada para operaciones de escritura
+- **MySQL**: Arquitectura eficiente para lecturas por clave primaria
+
+> **Nota**: Estos tiempos son orientativos y pueden variar según la configuración del sistema y la carga de trabajo.
