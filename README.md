@@ -1,25 +1,58 @@
-# cassandra-vs-mysql
-Este repositorio contiene lo necesario para crear dos contenedores Docker;\
-uno con una base de datos cassandra y otro con una base de datos mysql,\
-además de varios script para comprobar si hay diferencias en rendimento para algunas consultas.
+# Comparativa Cassandra vs MySQL
+Este proyecto compara el rendimiento entre bases de datos Cassandra y MySQL utilizando contenedores Docker.
 
-## MySQL
-A partir de aquí se define lo necesario para realizar las consultas en MySQL.
+## 📋 Descripción
+El repositorio contiene la configuración necesaria para crear y comparar dos entornos dockerizados. Hemos intentado que el diseño del proyecto sea lo más sencillo posible y evitar que el host tenga que instalar dependencias.
+- Base de datos Cassandra
+- Base de datos MySQL
+- Jupyter Notebook para realizar pruebas
+Incluye scripts para realizar pruebas de rendimiento con diferentes tipos de consultas.
 
-## Como clonar este repositorio
-Puedes clonar el repositorio usando el siguiente enlace:
-~~~
+## 🚀 Inicio rápido
+
+### Prerrequisitos
+- Docker y Docker Compose instalados
+
+### Instalación
+1. Clonar el repositorio:
+
+```bash
 git clone git@github.com:ASKhem/cassandra-vs-mysql.git
-~~~
+cd cassandra-vs-mysql
+```
 
-## Crear el contenedor Docker usando docker compose
-Colocate en la carpeta con los archivos de configuración y ejecuta el siguiente código para crear el contenedor:
-~~~
-docker compose up --build
-~~~
-En los archivos DockerFile y requirements.txt tienes la configuración para instalar las dependecias necesarias,\
-configurar el Jupyter y ejecutar los scripts de creación de la base de datos.
+### Configuración
+#### Para MySQL:
 
-## Ejecutar el notebook en Jupyter para realizar las consultas
-Usando las credenciales definidas en el DockerFile, abre Jupyter en el localhost:8888\
-y ejecuta las consultas del notebook.
+```bash
+docker-compose -f ./mysql/docker-compose.yaml up --build
+```
+
+#### Para Cassandra:
+```bash
+docker-compose -f ./cassandra/docker-compose.yaml up --build
+```
+
+## 📊 Ejecutar pruebas
+1. Accede a Jupyter Notebook:
+   - URL: http://localhost:8888
+   - Las credenciales se encuentran en el archivo DockerFile
+
+2. Abre el notebook correspondiente y ejecuta las consultas de prueba
+
+## 📁 Estructura del proyecto
+- `/mysql` - Configuración y scripts para MySQL
+- `/cassandra` - Configuración y scripts para Cassandra
+
+Hemos decidido dividir el proyecto en dos carpetas, así como crear dos archivos distintos para cada base de datos. De esta forma no se mezclan las configuraciones y los scripts de cada base de datos.
+
+## 🛠️ Tecnologías utilizadas
+- Docker
+- Cassandra
+- MySQL
+- Jupyter Notebook
+- Python
+
+## 📝 Notas
+- Los contenedores se ejecutan de forma independiente
+- Los resultados de las pruebas se pueden visualizar en los notebooks
